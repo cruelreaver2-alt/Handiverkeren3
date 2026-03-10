@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Opprett Testbruker - Håndtverkeren</title>
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #f3f4f6;
+    }
+    .container {
+      background: white;
+      border-radius: 12px;
+      padding: 32px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #17384E;
+      margin-top: 0;
+    }
+    button {
+      background: #E07B3E;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #c96930;
+    }
+    button:disabled {
+      background: #ccc;
+      cursor: not-allowed;
+    }
+    .info {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 20px 0;
+    }
+    .info strong {
+      color: #17384E;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 8px;
+    }
+    .success {
+      background: #d1fae5;
+      border: 1px solid #6ee7b7;
+      color: #065f46;
+    }
+    .error {
+      background: #fee2e2;
+      border: 1px solid #fca5a5;
+      color: #991b1b;
+    }
+    .code {
+      font-family: monospace;
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔧 Opprett Testbruker</h1>
+    
+    <div class="info">
+      <p><strong>Testbruker for Leverandør:</strong></p>
+      <p>📧 E-post: <span class="code">test@test.no</span></p>
+      <p>🔒 Passord: <span class="code">Test123</span></p>
+      <p>👤 Rolle: <span class="code">Leverandør (supplier)</span></p>
+      <p>🏢 Firma: <span class="code">Test AS</span></p>
+    </div>
+
+    <button id="createBtn" onclick="createTestUser()">
+      Opprett testbruker
+    </button>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const projectId = "bfxqoasgmtxgeyefaxks";
+    const publicAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJmeHFvYXNnbXR4Z2V5ZWZheGtzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMxNDIwMDIsImV4cCI6MjA4ODcxODAwMn0.8yzkvQMnnZGX3QbA48HJA9ZHw_DhrYSRXG2waSwSOIc";
+
+    async function createTestUser() {
+      const btn = document.getElementById('createBtn');
+      const resultDiv = document.getElementById('result');
+      
+      btn.disabled = true;
+      btn.textContent = "Oppretter bruker...";
+      resultDiv.innerHTML = "";
+
+      try {
+        const url = `https://${projectId}.supabase.co/functions/v1/make-server-8d200dba/auth/signup`;
+        
+        const response = await fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${publicAnonKey}`,
+          },
+          body: JSON.stringify({
+            email: "test@test.no",
+            password: "Test123",
+            name: "Test Leverandør",
+            role: "supplier",
+            company: "Test AS"
+          }),
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+          resultDiv.className = "result error";
+          resultDiv.innerHTML = `
+            <strong>❌ Feil ved opprettelse:</strong><br>
+            ${data.error || "Ukjent feil"}<br>
+            ${data.details ? `<small>${data.details}</small>` : ""}
+          `;
+        } else {
+          resultDiv.className = "result success";
+          resultDiv.innerHTML = `
+            <strong>✅ Testbruker opprettet!</strong><br><br>
+            <strong>Innloggingsdetaljer:</strong><br>
+            📧 E-post: <span class="code">test@test.no</span><br>
+            🔒 Passord: <span class="code">Test123</span><br>
+            👤 Bruker-ID: <span class="code">${data.userId}</span><br><br>
+            Du kan nå logge inn på leverandørportalen.
+          `;
+        }
+
+      } catch (error) {
+        resultDiv.className = "result error";
+        resultDiv.innerHTML = `
+          <strong>❌ Nettverksfeil:</strong><br>
+          ${error.message}
+        `;
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Opprett testbruker";
+      }
+    }
+  </script>
+</body>
+</html>
