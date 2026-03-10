@@ -1,0 +1,37 @@
+@import "./tailwind.css";
+@import "./theme.css";
+
+/* Smooth scrolling for horizontal carousels */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Better touch scrolling on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Ensure text is readable on mobile */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Prevent horizontal scroll on mobile */
+html,
+body {
+  overflow-x: hidden;
+}
+
+/* Better input focus on mobile */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  ring-width: 2px;
+}

@@ -1,0 +1,198 @@
+B
+
+Under følger detaljerte annotasjoner for de tre skjermene (Landingsside, Registrering, Opprett forespørsel). Inkluderer artboard-størrelser, grid, alle UI-elementer med posisjon/størrelse/typografi/farge, bilder/assets, hotspots (interaksjoner) og eksportinnstillinger. Kopier inn i separate annotations-filer (landing-annotations.txt, registration-annotations.txt, request-annotations.txt) eller lim direkte inn i Figma som kommentarer.
+
+Generelle designtokens (brukes på alle skjermer)
+
+Font: Inter (fallback Poppins, Arial)
+Radius: 8px
+Spacing unit: 8px
+Colors:
+Primær (mørk blå): #17384E
+Aksent / CTA (varm brun): #E07B3E
+Sekundær grå: #6B7280
+Lys bakgrunn: #F8FAFC
+Tekst primær: #111827
+Kort bakgrunn: #FFFFFF
+Shadows:
+Card: 0 6px 18px rgba(23,56,78,0.08)
+Icon size standard: 24x24 px
+LANDINGSSIDE — annotations Artboard
+Størrelse (mobile-first): 375 x 812 px (i tillegg: desktop 1366 x 1024 som separat artboard)
+Grid: 4 col mobile / 12 col desktop. Margin mobile: 16 px. Desktop margin: 96 px.
+Header (sticky)
+
+Høyde: 64 px; posisjon: x=0 y=0
+Elementer:
+Logo (emblem + wordmark): plassering x=16 y=12; høyde logo-ikon 40 px; padding-right 12 px til wordmark.
+CTA 1 (Opprett forespørsel): posisjon høyre, margin-right 16 px; størrelse: 140 x 40 px (mobile) / 180 x 48 px (desktop). Style: bg #E07B3E, radius 8px, text: Inter 16px semibold, color #FFFFFF.
+CTA 2 (For leverandører): ved siden av CTA1, outline style: border 1.5px #17384E, bg transparent, text #17384E, size 120 x 40 px.
+Interaksjon:
+Logo: klikk -> home.
+Opprett forespørsel: åpner modal/side for skjema (se Request screen).
+For leverandører: naviger til leverandør-onboarding.
+Hero-seksjon
+
+Box posisjon: y=80 (under header), padding top/bottom 24 px, full-width.
+Layout (mobile): stacked text over illustration.
+Overskrift:
+Tekst: "Finn lokale fagfolk — raskt, trygt og fagmessig."
+Typography: Inter 28 px bold (700), line-height 34 px, color #111827, margin-bottom 8 px.
+Undertekst:
+Tekst: "Få kuraterte, fastpris- eller detaljtilbud fra godkjente håndverkere i ditt område."
+Typography: Inter 15 px regular, color #6B7280, line-height 22 px.
+Primary CTA:
+"Opprett forespørsel" — størrelse full-width mobile: height 56 px, bg #E07B3E, radius 8 px, text Inter 16 px semibold white.
+Secondary CTA:
+"Se hvordan det fungerer" — ghost, text #17384E, margin-top 12 px.
+Hero-illustrasjon:
+Size mobile: full width under text, height ~160 px; asset: flat vector med hus/hammer/rør/ledning.
+Trust-strip (under hero):
+3 ikoner inline (24x24) med tekst under (Inter 13 px): "Verifiserte fagfolk", "Prisgaranti", "1 års garanti".
+Spacing: icon-text gap 8 px, inline gap 16 px.
+Hvordan det fungerer (3-trinns strip)
+
+Layout: horizontal cards (mobile: stacked vertical).
+Each card:
+Card bg: #FFFFFF, radius 8 px, shadow card.
+Icon 40x40, title Inter 16px semibold, description Inter 13px.
+Interaksjon: trykk på en card → åpner modal med detaljert forklaring.
+Produkt/kategori-rute
+
+Horizontal scroll (mobile) med kategori-kort 120 x 120 px: ikon + label (Inter 14 px).
+Kategorier: Trevare, Rørlegger, Elektro, Maling, osv.
+CTA under: "Se produkter" (link style).
+Quick-estimat bar (interaktiv)
+
+Komponent posisjon: under kategorier, padding 16 px.
+Felt: kategori dropdown (height 48 px), beskrivelsesfelt (textarea height 96 px), bildeopplaster (thumbnails 72x72).
+Primær knapp: "Få estimat" — full width, height 56 px, bg #17384E, text white.
+Interaksjon: click -> viser modal med estimat-intervall (f.eks. "10 000–25 000 kr").
+Utvalgte fagfolk karusell
+
+Kort (card): width 260 px, høyde 140 px — profilbilde 64x64, navn Inter 16 px semibold, rating 14 px, kort beskrivelse 13 px.
+Interaksjon: swipe/carousel; trykk -> åpner leverandørprofil.
+Footer
+
+Seksjoner: Lenker (columns), nyhetsbrev (input 320 x 40 + send btn), social icons.
+Tekst: Inter 13 px #6B7280.
+Eksport (PNG)
+
+Mobile artboard export: @2x (scale 2) filnavn landing-mobile@2x.png.
+Desktop artboard export: @1x landing-desktop.png.
+REGISTRERING — annotations Artboard
+Mobile form artboard: 375 x 900 px.
+Header
+
+Simplified: back arrow left (x=16 y=16), title center "Registrer deg".
+Stegvis onboarding (tabs)
+
+Top stepper: 3 steg (Konto, Rolle, Bekreftelse) — small pills with current step highlighted (#17384E).
+Form (Konto)
+
+Fields (stacked, gap 12 px):
+Fullt navn — input height 48 px, placeholder "Fullt navn", label Inter 13 px #6B7280.
+E-post — input same height, placeholder "navn@epost.no".
+Passord — input type password; show/hide icon right (24x24).
+Rolle selector — radio buttons: Kunde / Leverandør. (Leverandør-selection opens onboarding-tillegg senere.)
+CTA:
+"Fortsett" primær — full width height 56 px, bg #E07B3E, text white Inter 16 semibold.
+Alternativ link:
+"Har du allerede konto? Logg inn" — link text center #17384E, Inter 14 px.
+Leverandørvalg (hvis Rolle = Leverandør)
+
+Ekspanderbart seksjon:
+Firma navn (input), organisasjonsnr (input), telefon, bransje dropdown (Tre, Rør, Elektro, Annet).
+Dokumentopplasting: Sertifikat/forsikring — drag&drop box height 120 px, dashed border #E5E7EB, text Inter 13 px #6B7280.
+Portefølje bilder: thumbnails 72x72, max 8.
+Verifisering badge:
+Checkbox: "Jeg bekrefter at jeg har gyldig forsikring" — text Inter 13 px.
+Bekreftelse (step)
+
+Epost-verifisering note: "Vi har sendt en kode til epost. Lim inn koden her." — input for 6-digit code (6 x 40px boxes inline).
+CTA: "Bekreft konto" — primary.
+Interaksjoner / validasjon
+
+Field validation: inline error text Inter 12 px red under felt.
+Document upload: progress indicator and thumbnail preview.
+After successful register: redirect to onboarding or dashboard.
+Eksport
+
+Export mobile registration artboard @2x => registration-mobile@2x.png
+Also export individual icons (password eye, upload icon) as SVG.
+OPPRETT FORESPØRSEL — annotations Artboard
+Mobile form artboard: 375 x 900 px (scrollable).
+Header
+
+Back arrow left, title center "Opprett forespørsel", help icon right (24x24).
+Steg 1 — Grunninfo
+
+Felt: Kategori dropdown (Trevare/Rør/Elektro) — height 48 px.
+Tittel/overskrift felt: "Kort tittel av jobben" — input height 48 px placeholder "Eks: Bytte dørhengsler".
+Beskrivelse (textarea): height 160 px, placeholder "Beskriv jobben detaljert. Legg ved mål, materialer og ønsket tidsrom."
+Tip: small hint tekst under textarea: "Tips: ta bilder og mål for raskere tilbud" — Inter 13 px #6B7280.
+Steg 2 — Bilder
+
+Bildeopplaster komponent:
+Drag & drop area height 140 px, dashed border #E5E7EB, center upload icon 48x48 and tekst "Dra bilder hit eller trykk for å velge".
+Thumbnail preview: 72x72, gap 8 px, max 8 bilder. Each thumbnail: overlay delete icon top-right (16x16).
+Komprimering & resizing: anbefalt 2MB max per bilde; show error hvis større.
+Interaksjon: tap thumbnail -> opens lightbox (zoom) + add caption (felt under each).
+Steg 3 — Lokasjon & tid
+
+Lokasjon input: autocompleted Google Places field with map pin icon left; height 48 px.
+Adresse fallback: manual input felt.
+Ønsket tidsrom: datepicker (start + end) or ASAP toggle.
+Postnummer inferencing: if postnr given, automatically set region filter for matchmaking.
+Steg 4 — Preferanser & budsjett (valgfritt)
+
+Budsjett-intervall (min/max) — slider component full width; display numeric fields under (input height 48 px).
+Preferanser: checkbox list: "Kun verifiserte fagfolk", "Få faste pris-pakker", "Vis kun leverandører med rating >= 4.5".
+Submit area
+
+CTA primary: "Send forespørsel" — full width, height 56 px bg #E07B3E, text white Inter 16 semibold.
+Secondary: "Lagre som utkast" — ghost button under.
+After submit — confirmation modal
+
+Modal content:
+Tittel: "Forespørsel sendt!"
+Undertekst: "Vi sender forespørselen til relevante fagfolk i ditt område. Du får svar innen X timer." — Inter 14 px.
+CTA: "Gå til mine forespørsler" (solid #17384E) and "Opprett ny forespørsel" (ghost).
+Notifications:
+Push/web-push allowed prompt (standard browser prompt) — explain benefit.
+Form validations & error states
+
+Required fields: Category, Title, Description, Location.
+Error styling: red border #EF4444, error text Inter 12 px color #EF4444 under field.
+Network/loading state: spinner inside primary CTA, disabled while sending.
+Accessibility notes
+
+All interactive elements: min touch target 44x44 px.
+Color contrast: ensure text-on-CTA passes WCAG AA (check #E07B3E on white is OK for buttons with white text).
+ARIA: use aria-live for submission confirmation, aria-invalid for inputs.
+Export settings (form & request screens)
+
+Export mobile artboards at @2x (scale 2) as PNG: filenames request-mobile@2x.png, registration-mobile@2x.png.
+Export icons as SVG; images used in hero/illustration as optimized PNG or SVG (vector preferred).
+For thumbnails, export web-optimized PNG at 72 DPI, max width 144 px (for retina use 288 px).
+Hotspots / Prototype interactions (Figma)
+
+Landing:
+CTA "Opprett forespørsel" -> open Request artboard modal (overlay).
+"Se hvordan det fungerer" -> open How-it-works modal (3-step).
+Category card -> product category page.
+Registration:
+Role selector toggle -> toggles extra inputs (leverandør fields).
+Upload document -> open file picker, show progress.
+"Fortsett" -> advance stepper.
+Request:
+Image upload -> show thumbnails.
+Location select -> show map modal and "Use current location" option.
+Send forespørsel -> show confirmation modal and navigate to "Mine forespørsler".
+Checklist før eksport/import til Figma
+
+Opprett Styles i Figma: Colors (primary, accent, greys), Text Styles (H1, H2, Body, Small).
+Lag komponenter: Button (primary/secondary/ghost), Input, Card, Thumbnail, Header.
+Lag prototypetilkoblinger i Figma: overlay modals for request form, stepper flows, confirmation modal.
+Test på mobile preview i Figma Mirror eller web preview.
+Vil du at jeg genererer ferdig tekstfil for hver skjerm (landing-annotations.txt, registration-annotations.txt, request-annotations.txt) i én sammenhengende tekstblokk du kan paste til filer nå?
